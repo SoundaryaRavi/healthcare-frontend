@@ -34,15 +34,12 @@ export default function SignIn(props) {
     const [emailErrorMessage, setEmailErrorMessage] = React.useState('');
     const [passwordError, setPasswordError] = React.useState(false);
     const [passwordErrorMessage, setPasswordErrorMessage] = React.useState('');
-    const [open, setOpen] = React.useState(false);
+    const [formData, setFormdata] = React.useState({ email: '', password: '' });
 
-    const handleClickOpen = () => {
-        setOpen(true);
-    };
-
-    const handleClose = () => {
-        setOpen(false);
-    };
+    const handleInput = (event) => {
+        const { name, value } = event.target;
+        setFormdata({ ...formData, [name]: value })
+    }
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -120,6 +117,7 @@ export default function SignIn(props) {
                             fullWidth
                             variant="outlined"
                             color={emailError ? 'error' : 'primary'}
+                            onChange={(e) => handleInput(e)}
                         />
                     </FormControl>
                     <FormControl>
@@ -136,16 +134,15 @@ export default function SignIn(props) {
                             fullWidth
                             variant="outlined"
                             color={passwordError ? 'error' : 'primary'}
+                            onChange={(e) => handleInput(e)}
                         />
                     </FormControl>
-                    <ForgotPassword open={open} handleClose={handleClose} />
                     <Button
                         type="submit"
                         fullWidth
                         variant="contained"
                         onClick={validateInputs}
                     >
-                        {/* Sign Up */}
                         <Link
                             href="/dashboard"
                             variant="body2"

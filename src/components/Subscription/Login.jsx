@@ -58,7 +58,7 @@ export default function SignIn(props) {
         }
     };
 
-    const validateInputs = () => {
+    const validateInputs = (e) => { 
         const email = formData.email;
         const password = formData.password;
 
@@ -73,9 +73,19 @@ export default function SignIn(props) {
             setEmailErrorMessage('');
         }
 
-        if (!password || password.length < 6) {
+        if (!password) {
             setPasswordError(true);
-            setPasswordErrorMessage('Password must be at least 6 characters long.');
+            let strength = 0;
+            if(password.match(/^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/)){ 
+                strength++;
+            } 
+            console.log(strength)
+            if(strength){
+                setPasswordErrorMessage('Password should have one lowercase and one Uppercase and one number and one special character'); 
+            }
+            if(password.length < 6){ 
+                setPasswordErrorMessage('Password must be at least 6 characters long.'); 
+            } 
             isValid = false;
         } else {
             setPasswordError(false);
