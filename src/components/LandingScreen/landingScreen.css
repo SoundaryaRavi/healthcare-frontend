@@ -1,0 +1,12 @@
+.box {
+    color: black;
+    margin: 30px 45px 30px 100px;
+    padding: 10px
+}
+
+.readmore_buttn {
+    background-color: #351f1f78;
+    color: white;
+    padding: 10px;
+    border-color: white;
+}
