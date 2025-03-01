@@ -8,7 +8,6 @@ import Typography from '@mui/material/Typography';
 import MuiCard from '@mui/material/Card';
 import { styled } from '@mui/material/styles';
 import ForgotPassword from './ForgotPassword';
-import Logo from '../../../assets/150x150.png'
 
 const Card = styled(MuiCard)(({ theme }) => ({
     display: 'flex',
@@ -46,18 +45,37 @@ export default function SignIn(props) {
     };
 
     const handleSubmit = (event) => {
+        event.preventDefault();
         if (emailError || passwordError) {
-            event.preventDefault();
             return;
         }
-        const data = new FormData(event.currentTarget);
-        console.log({
-            email: data.get('email'),
-            password: data.get('password'),
-        });
     };
 
     const validateInputs = () => {
+
+        const email = formData.email;
+        const password = formData.password;
+
+        let isValid = true;
+
+        if (!email || !/\S+@\S+\.\S+/.test(email)) {
+            setEmailError(true);
+            setEmailErrorMessage('Please enter a valid email address.');
+            isValid = false;
+        } else {
+            setEmailError(false);
+            setEmailErrorMessage('');
+        }
+
+        if (!password || password.length < 6) {
+            setPasswordError(true);
+            setPasswordErrorMessage('Password must be at least 6 characters long.');
+            isValid = false;
+        } else {
+            setPasswordError(false);
+            setPasswordErrorMessage('');
+        }
+        return isValid;
     };
 
     return (

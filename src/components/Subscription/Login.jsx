@@ -36,6 +36,7 @@ export default function SignIn(props) {
     const [passwordError, setPasswordError] = React.useState(false);
     const [passwordErrorMessage, setPasswordErrorMessage] = React.useState('');
     const [open, setOpen] = React.useState(false);
+    const [formData, setFormdata] = React.useState({ email: '', password: '' });
 
     const handleClickOpen = () => {
         setOpen(true);
@@ -45,24 +46,47 @@ export default function SignIn(props) {
         setOpen(false);
     };
 
+    const handleInput = (event) => {
+        const { name, value } = event.target;
+        setFormdata({ ...formData, [name]: value })
+    }
+
     const handleSubmit = (event) => {
+        event.preventDefault();
         if (emailError || passwordError) {
-            event.preventDefault();
             return;
         }
-        const data = new FormData(event.currentTarget);
-        console.log({
-            email: data.get('email'),
-            password: data.get('password'),
-        });
     };
 
     const validateInputs = () => {
+        const email = formData.email;
+        const password = formData.password;
+
+        let isValid = true;
+
+        if (!email || !/\S+@\S+\.\S+/.test(email)) {
+            setEmailError(true);
+            setEmailErrorMessage('Please enter a valid email address.');
+            isValid = false;
+        } else {
+            setEmailError(false);
+            setEmailErrorMessage('');
+        }
+
+        if (!password || password.length < 6) {
+            setPasswordError(true);
+            setPasswordErrorMessage('Password must be at least 6 characters long.');
+            isValid = false;
+        } else {
+            setPasswordError(false);
+            setPasswordErrorMessage('');
+        }
+        return isValid;
     };
 
     return (
         <>
-            <Card variant="outlined" sx={{ marginTop: '4em'}}>
+            <Card variant="outlined" sx={{ marginTop: '4em' }}>
                 <div style={{
                     display: 'flex',
                     flexDirection: 'column',
@@ -89,7 +113,7 @@ export default function SignIn(props) {
                         gap: 2,
                     }}
                 >
-                    <FormControl> 
+                    <FormControl>
                         <TextField
                             error={emailError}
                             helperText={emailErrorMessage}
@@ -103,9 +127,10 @@ export default function SignIn(props) {
                             fullWidth
                             variant="outlined"
                             color={emailError ? 'error' : 'primary'}
+                            onChange={(e) => handleInput(e)}
                         />
                     </FormControl>
-                    <FormControl> 
+                    <FormControl>
                         <TextField
                             error={passwordError}
                             helperText={passwordErrorMessage}
@@ -119,6 +144,7 @@ export default function SignIn(props) {
                             fullWidth
                             variant="outlined"
                             color={passwordError ? 'error' : 'primary'}
+                            onChange={(e) => handleInput(e)}
                         />
                     </FormControl>
                     <ForgotPassword open={open} handleClose={handleClose} />
@@ -139,7 +165,7 @@ export default function SignIn(props) {
                     >
                         Forgot your password?
                     </Link>
-                </Box> 
+                </Box>
                 <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
                     <Typography sx={{ textAlign: 'center' }}>
                         New User?{' '}

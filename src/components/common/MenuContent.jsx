@@ -7,10 +7,10 @@ import Stack from '@mui/material/Stack';
 import Link from '@mui/material/Link';
 
 const mainListItems = [
-    { text: 'Dashboard' },
-    { text: 'My Profile' },
-    { text: 'Wellness Goals' },
-    { text: 'Messages' },
+    { text: 'Dashboard', path: '/dashboard' },
+    { text: 'My Profile', path: '/profile' },
+    { text: 'Wellness Goals', path: '/goals' },
+    { text: 'Messages', path: '/messages' },
 ];
 
 export default function MenuContent() {
@@ -21,7 +21,7 @@ export default function MenuContent() {
                     <ListItem key={index} disablePadding sx={{ display: 'block' }}>
                         <ListItemButton selected={index === 0}>
                             <Link
-                                href="/register"
+                                href={item.path}
                                 variant="body2"
                                 sx={{ alignSelf: 'center', color: '#000', textDecoration: 'none' }}
                             >
