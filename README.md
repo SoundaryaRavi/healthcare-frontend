@@ -36,6 +36,8 @@
 
 # We were unable to complete the entire task as we were discussing the doubts with the team and faced challenges in configuring Git, setting up Node, and installing the other dependencies in the system. Anyway, thank you for this opportunity
 
+# there might me merge conflict => plz see my repor feature/suguna-v1
+
 # healthcare-frontend <img width="1440" alt="Screenshot 2025-03-01 at 6 24 52 PM" src="https://github.com/user-attachments/assets/29aa6304-52c9-48a5-869d-98d7daeb60a1" />
 ![WhatsApp Image 2025-03-01 at 6 31 27 PM](https://github.com/user-attachments/assets/6b1584da-ff3c-47e0-b47f-e66aa8b3d791)
 ![WhatsApp Image 2025-03-01 at 6 31 27 PM (1)](https://github.com/user-attachments/assets/8b99e098-aee1-4b80-9778-0ea403979e7e)
