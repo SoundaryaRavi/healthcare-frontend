@@ -62,20 +62,19 @@ export default function SignIn(props) {
 
     return (
         <>
-            <Card variant="outlined" sx={{ marginTop: '4em'}}>
+            <Card variant="outlined" sx={{ marginTop: '4em' }}>
                 <div style={{
                     display: 'flex',
                     flexDirection: 'column',
                     alignItems: 'center',
                     justifyContent: 'center'
                 }}>
-                    <img src={Logo} style={{ width: '150px', height: '150px' }} />
                     <Typography
                         component="h1"
                         variant="h4"
                         sx={{ width: '100%', fontSize: 'clamp(2rem, 10vw, 2.15rem)', marginTop: '0.5em', textAlign: 'center' }}
                     >
-                        Login
+                        Register
                     </Typography>
                 </div>
                 <Box
@@ -89,7 +88,7 @@ export default function SignIn(props) {
                         gap: 2,
                     }}
                 >
-                    <FormControl> 
+                    <FormControl>
                         <TextField
                             error={emailError}
                             helperText={emailErrorMessage}
@@ -105,7 +104,7 @@ export default function SignIn(props) {
                             color={emailError ? 'error' : 'primary'}
                         />
                     </FormControl>
-                    <FormControl> 
+                    <FormControl>
                         <TextField
                             error={passwordError}
                             helperText={passwordErrorMessage}
@@ -128,27 +127,25 @@ export default function SignIn(props) {
                         variant="contained"
                         onClick={validateInputs}
                     >
-                        Login
+                        {/* Sign Up */}
+                        <Link
+                            href="/dashboard"
+                            variant="body2"
+                            sx={{ alignSelf: 'center', color: '#fff', textDecoration: 'none' }}
+                        >
+                            Sign Up
+                        </Link>
                     </Button>
-                    <Link
-                        component="button"
-                        type="button"
-                        onClick={handleClickOpen}
-                        variant="body2"
-                        sx={{ alignSelf: 'center', textDecoration: 'none' }}
-                    >
-                        Forgot your password?
-                    </Link>
-                </Box> 
+                </Box>
                 <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
                     <Typography sx={{ textAlign: 'center' }}>
-                        New User?{' '}
+                        Existing User?{' '}
                         <Link
-                            href="/register"
+                            href="/login"
                             variant="body2"
                             sx={{ alignSelf: 'center', textDecoration: 'none' }}
                         >
-                            Register Here
+                            Login Here
                         </Link>
                     </Typography>
                 </Box>

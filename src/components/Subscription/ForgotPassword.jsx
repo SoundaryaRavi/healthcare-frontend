@@ -19,13 +19,13 @@ export default function ForgotPassword({ open, handleClose }) {
                         event.preventDefault();
                         handleClose();
                     },
-                    sx: { backgroundImage: 'none' },
+                    sx: { backgroundImage: 'none', margin: '1em' },
                 },
             }}
         >
             <DialogTitle>Reset password</DialogTitle>
             <DialogContent
-                sx={{ display: 'flex', flexDirection: 'column', gap: 2, width: '100%' }}
+                sx={{ display: 'flex', flexDirection: 'column', gap: 2, width: 'auto' }}
             >
                 <DialogContentText>
                     Enter your account&apos;s email address, and we&apos;ll send you a link to
